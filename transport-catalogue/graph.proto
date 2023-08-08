@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package transport_catalogue;
+
+message VertexID {
+    uint32 vertex_id = 1;
+}
+
+message EdgeID {
+    uint32 edge_id = 1;
+}
+
+message Edge {
+    VertexID vert_from = 1;
+    VertexID vert_to = 2;
+    double weight = 3;
+    string name = 4;
+    uint32 span_count = 5;
+}
+
+message IncidenceList {
+    repeated uint32 edges_id = 1;
+}
+
+message RouteInternalData {
+    double weight = 1;
+
+    oneof prev {
+        EdgeID prev_edge = 2;
+    }
+}
+
+message RouteInternalDataVectorElem {
+    oneof elem {
+        RouteInternalData data = 1;
+    }
+}
+
+message RoutesInternalData {
+    repeated RouteInternalDataVectorElem route_internal_data = 1;
+}
+
+message Graph {
+    repeated Edge edges = 1;
+    repeated IncidenceList incidence_lists = 2;
+}

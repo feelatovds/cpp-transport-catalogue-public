@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package transport_catalogue;
+
+message Monostate {
+    bool m = 1;
+}
+
+message String {
+    string s = 1;
+}
+
+message Rgb {
+    uint32 red = 1;
+    uint32 green = 2;
+    uint32 blue = 3;
+}
+
+message Rgba {
+    uint32 red = 1;
+    uint32 green = 2;
+    uint32 blue = 3;
+    double opacity = 4;
+}
+
+message Color {
+    Monostate monostate = 1;
+    String str = 2;
+    Rgb rgb = 3;
+    Rgba rgba = 4;
+}
